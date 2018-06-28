@@ -1,0 +1,19 @@
+CREATE TABLE nicsieniestao.`matches` (
+        idmatch INT NOT NULL AUTO_INCREMENT,
+        date VARCHAR(45) NOT NULL,
+        opponent VARCHAR(45) NOT NULL,
+        PRIMARY KEY (idmatch));
+
+        CREATE TABLE nicsieniestao.`goals` (
+        idgoal INT NOT NULL AUTO_INCREMENT,
+        idmatch INT NOT NULL,
+        shooter VARCHAR(45) NOT NULL,
+        minute INT NOT NULL,
+        isgood INT NOT NULL,
+        PRIMARY KEY (idgoal),
+        INDEX idmatch_idx (idmatch ASC),
+        CONSTRAINT idmatch
+        FOREIGN KEY (idmatch)
+        REFERENCES nicsieniestao.`matches` (idmatch)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION);
